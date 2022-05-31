@@ -14,3 +14,19 @@ exports.getEmployeeList = (req,res)=>{
       res.send(employees)
    })
 }
+// get employee by id
+exports.getEmployeeByID = (req,res) =>{
+   // console.log('get emp by id');
+   EmployeeModel.getEmployeeByID(req.params.id,(err,employee)=>{
+      if(err)
+      res.send(err);
+      console.log('single employee data',employee);
+      res.send(employee);
+      
+
+   })
+}
+// create new employee
+exports.createNewEmployee = (req,res) =>{
+    console.log('req data',req.body);
+}

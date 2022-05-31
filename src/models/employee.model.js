@@ -21,4 +21,18 @@ Employee.getAllEmployees = (result) =>{
         }
    })
 }
+
+// get employee by ID From database
+Employee.getEmployeeByID = (id,result) =>{
+    dbConn.query('SELECT * FROM employees WHERE id=?',id ,(err,res) =>{
+        if(err){
+            console.log('Error while fetching employee by id',err);
+            result(null,err);
+        }else{
+            result(null,res);
+        }
+
+    })
+
+}
 module.exports = Employee;
