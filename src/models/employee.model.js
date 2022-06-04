@@ -50,6 +50,33 @@ Employee.createEmployee = (employeeReqData,result)=>{
     })
 }
 
+// NB TODAY
+// update employee
+Employee.updateEmployee = (id, employeeReqData, result)=>{
+    dbConn.query("UPDATE employees SET first_name=?,last_name=?,email=?,phone=?,organization=?,designation=?,salary=?,status=? WHERE id = ?", [employeeReqData.first_name,employeeReqData.last_name,employeeReqData.email,employeeReqData.phone,employeeReqData.organization,employeeReqData.designation,employeeReqData.salary,employeeReqData.status, id], (err, res)=>{
+        if(err){
+            console.log('Error while updating the employee');
+            result(null, err);
+        }else{
+            console.log("Employee updated successfully");
+            result(null, res);
+        }
+    });
+}
+
+//last today
+//delete employee
+Employee.deleteEmployee = (id,result)=>{
+    dbConn.query('DELETE FROM  employees WHERE id=?',[id],(err,res)=>{
+        if(err){
+            console.log('Error while deleting the employee');
+            result(null,err);
+        }else{
+            result(null,res);
+        }
+    } )
+}
+
 
 
 module.exports = Employee;

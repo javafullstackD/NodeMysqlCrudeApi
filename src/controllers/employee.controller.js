@@ -48,7 +48,7 @@ exports.createNewEmployee = (req,res) =>{
 }
 // NB TODAY
 //Update employee
-exports.updateEmployee = ()=>{
+exports.updateEmployee = (req,res)=>{
    const employeeReqData = new EmployeeModel(req.body);
    console.log('employeeData update',employeeReqData);
 
@@ -67,4 +67,15 @@ exports.updateEmployee = ()=>{
        })
     }
 
+}
+//last today
+//delete employee
+exports.deleteEmployee = (req,res) =>{
+   EmployeeModel.deleteEmployee(req.params.id, (err,employee)=>{
+      if(err)
+      res.send(err);
+      res.json({success:true, message:'Employee deleted successfully'});
+   })
+
+   
 }

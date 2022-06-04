@@ -12,4 +12,12 @@ router.get('/:1d',employeeController.getEmployeeByID);
 //create a new employee
 router.post('/',employeeController.createNewEmployee);
 
+//NB TODAY
+//Update employee
+router.put('/:id',employeeController.updateEmployee);
+
+//last today
+//delete employee
+router.delete('/:id', employeeController.deleteEmployee);
+
 module.exports = router;
